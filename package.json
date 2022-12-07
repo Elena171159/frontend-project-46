@@ -21,6 +21,15 @@
   },
   "homepage": "https://github.com/Elena171159/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^9.4.1"
+    "commander": "^9.4.1",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "2.8.0"
   }
 }
