@@ -14,7 +14,6 @@ const getDiff = (data1, data2) => {
     if (!isInfirst && isInsecond) return { name: key, status: 'added', value: value2 };
     if (isInfirst && isInsecond && value1 === value2) return { name: key, status: 'unchanged', value: value2 };
     if (isInfirst && isInsecond && value1 !== value2) {
-      3;
       return {
         name: key, status: 'changed', oldValue: value1, newValue: value2,
       };
