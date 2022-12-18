@@ -5,27 +5,21 @@ import getDiff from './diff.js';
 
 const readFile = (filePath) => {
   const fileData = fs.readFileSync(path.resolve(process.cwd(), filePath).trim(), 'utf-8');
-  const ext = path.extname(filePath);
-  if (ext === '.json') {
-    return JSON.parse(fileData);
-  }
+  // const ext = path.extname(filePath);
+  // if (ext === '.json') {
+  return JSON.parse(fileData);
 };
 
 const makeTree = (mas) => {
   const diff = mas.map(({
     name, status, value, oldValue, newValue,
   }) => {
-    if (status === 'unchanged') {
-      return `   ${name}: ${value}`;
-    }
-    if (status === 'changed') {
-      return ` - ${name}: ${oldValue}\n + ${name}: ${newValue}`;
-    }
-    if (status === 'deleted') {
-      return ` - ${name}: ${value}`;
-    }
-    if (status === 'added') {
-      return ` + ${name}: ${value}`;
+    switch (status) {
+      case 'unchanged': return `   ${name}: ${value}`;
+      case 'changed': return ` - ${name}: ${oldValue}\n + ${name}: ${newValue}`;
+      case 'deleted': return ` - ${name}: ${value}`;
+      case 'added': return ` + ${name}: ${value}`;
+      default: throw new Error(`Unknown order state: '${status}'!`);
     }
   });
   const strDiff = diff.join('\n');

@@ -12,12 +12,13 @@ const getDiff = (data1, data2) => {
     const value2 = _.get(data2, key);
     if (isInfirst && !isInsecond) return { name: key, status: 'deleted', value: value1 };
     if (!isInfirst && isInsecond) return { name: key, status: 'added', value: value2 };
-    if (isInfirst && isInsecond && value1 === value2) return { name: key, status: 'unchanged', value: value2 };
+    // if (isInfirst && isInsecond && value1 === value2)
     if (isInfirst && isInsecond && value1 !== value2) {
       return {
         name: key, status: 'changed', oldValue: value1, newValue: value2,
       };
     }
+    return { name: key, status: 'unchanged', value: value2 };
   });
   return result;
 };
