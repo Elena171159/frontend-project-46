@@ -4,7 +4,7 @@ import _ from 'lodash';
 const getDiff = (data1, data2) => {
   const keys1 = Object.keys(data1);
   const keys2 = Object.keys(data2);
-  const uniqKeys = _.union(keys1, keys2).sort();
+  const uniqKeys = _.sortBy(_.union(keys1, keys2));
   const result = uniqKeys.map((key) => {
     const isInfirst = _.has(data1, key);
     const isInsecond = _.has(data2, key);
