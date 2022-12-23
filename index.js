@@ -1,20 +1,5 @@
-// readFiles makediff
-import yaml from 'js-yaml';
-import path from 'path';
-import fs from 'fs';
 import getDiff from './diff.js';
-
-const readFile = (filePath) => {
-  const fileData = fs.readFileSync(path.resolve(process.cwd(), filePath).trim(), 'utf-8');
-  const ext = path.extname(filePath);
-  if (ext === '.json') {
-    return JSON.parse(fileData);
-  }
-  if (ext === '.yml' || ext === '.yaml') {
-    return yaml.load(fileData);
-  }
-  return console.log(('Unknown file format'));
-};
+import readFile from './parsers.js';
 
 const makeTree = (mas) => {
   const diff = mas.map(({
@@ -37,5 +22,5 @@ const makeDiff = (file1, file2) => {
   const result = getDiff(obj1, obj2);
   return makeTree(result);
 };
-console.log(makeDiff('__tests__/__fixtures__/file2.yml', '__tests__/__fixtures__/file3.yaml'));
+// console.log(makeDiff('__tests__/__fixtures__/file2.yml', '__tests__/__fixtures__/file3.yaml'));
 export default makeDiff;
