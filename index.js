@@ -22,5 +22,5 @@ const makeDiff = (file1, file2) => {
   const result = getDiff(obj1, obj2);
   return makeTree(result);
 };
-// console.log(makeDiff('__tests__/__fixtures__/file2.yml', '__tests__/__fixtures__/file3.yaml'));
+console.log(makeDiff('__tests__/__fixtures__/file2.yml', '__tests__/__fixtures__/file1.json'));
 export default makeDiff;
