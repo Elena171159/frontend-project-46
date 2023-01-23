@@ -18,4 +18,5 @@ test('flat Json', () => {
 test('flat yml', () => {
   expect(makeDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toBe(expected);
   expect(makeDiff(getFixturePath('file3.yaml'), getFixturePath('file2.yml'))).toBe(expected);
+  expect(makeDiff(getFixturePath('file3.yaml'), getFixturePath('file2.yml'))).not.toBe('Unknown file format');
 });

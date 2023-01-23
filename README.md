@@ -3,3 +3,4 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5739055c45b4ab5eecfe/maintainability)](https://codeclimate.com/github/Elena171159/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5739055c45b4ab5eecfe/test_coverage)](https://codeclimate.com/github/Elena171159/frontend-project-46/test_coverage)
+[![Node CI](https://github.com/Elena171159/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Elena171159/frontend-project-46/actions/workflows/nodejs.yml)
