@@ -5,13 +5,6 @@ const prefixOffset = 2;
 const indentSymbol = ' ';
 const openSymbol = '{';
 const closeSymbol = '}';
-const labels = {
-  deleted: '-',
-  added: '+',
-  unchanged: ' ',
-  nested: ' ',
-};
-
 // const addPrefix = (key, type, indent) => `${indent}${labels[type]} ${key}`;
 const stringify = (value, depth) => {
   if (!_.isObject(value)) {
