@@ -13,4 +13,5 @@ const readFile = (filePath) => {
   }
   return console.log(('Unknown file format'));
 };
+
 export default readFile;

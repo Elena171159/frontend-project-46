@@ -9,5 +9,4 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const result = makeDiff(differenceTree, formatName);
   return result;
 };
-// console.log(genDiff('../__tests__/__fixtures__/file1.yml', '../__tests__/__fixtures__/file2.yml'));
 export default genDiff;

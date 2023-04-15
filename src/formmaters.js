@@ -66,7 +66,7 @@ const makeDiff = (data, format) => {
       return stylish(data);
     }
     case 'json': {
-      return JSON.stringify(data);
+      return JSON.stringify(data, '', '\t');
     }
     default: {
       throw Error(`Incorrect format: ${format}`);
