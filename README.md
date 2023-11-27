@@ -14,3 +14,20 @@
   https://asciinema.org/a/GnS06j3wtW7d7oCWpBGizyzRv
   ## Plain Format
    https://asciinema.org/a/5Avqv5xfp4Tw4xKgd9lBaWMUR
+   ### Hexlet frontend-project-2:
+
+<h1>Difference calculator</h1>
+<p>Difference calculator is a program that determines the difference between two data structures.</p>
+<p>Utility features:</p>
+<ul>
+  <li>Support for different input formats: yaml, json</li>
+  <li>Report generation in the form of plain text, stylish and json</li>
+</ul>
+
+## Installation
+Clone this repository and enter the commands:
+make install
+npm link
+## Help
+gendiff -h
+
