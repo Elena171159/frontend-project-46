@@ -5,7 +5,6 @@ const prefixOffset = 2;
 const indentSymbol = ' ';
 const openSymbol = '{';
 const closeSymbol = '}';
-// const addPrefix = (key, type, indent) => `${indent}${labels[type]} ${key}`;
 const stringify = (value, depth) => {
   if (!_.isObject(value)) {
     return `${value}`;
@@ -23,7 +22,7 @@ const stringify = (value, depth) => {
     `${bracketIndent}${closeSymbol}`,
   ].join('\n');
 };
-// `${keyIndent}+ ${node.name}:
+
 const stylish = (data) => {
   const iter = (tree, depth) => {
     const result = tree.map((node) => {
@@ -53,18 +52,35 @@ const stylish = (data) => {
     `${closeSymbol}`,
   ].join('\n');
 };
-const makeDiff = (data, format) => {
-  switch (format) {
-    case 'stylish': {
-      return stylish(data);
-    }
-    case 'json': {
-      return JSON.stringify(data, '', '\t');
-    }
-    default: {
-      throw Error(`Incorrect format: ${format}`);
-    }
+const buildString = (data) => {
+  if (_.isObject(data)) {
+    return '[complex value]';
   }
+  return typeof data === 'string' ? `'${data}'` : String(data);
 };
 
-export { makeDiff, stylish };
+const plain = (data) => {
+  const iter = (lines, path) => {
+    const filter = lines.filter((line) => line.status !== 'unchanged');
+    const result = filter.map((line) => {
+      const { name } = line;
+      const newPath = [...path, name];
+      switch (line.status) {
+        case 'added':
+          return `Property '${newPath.join('.')}' was added with value: ${buildString(line.value)}`;
+        case 'deleted':
+          return `Property '${newPath.join('.')}' was removed`;
+        case 'changed':
+          return `Property '${newPath.join('.')}' was updated. From ${buildString(line.oldValue)} to ${buildString(line.newValue)}`;
+        case 'nested':
+          return iter(line.value, newPath);
+        default:
+          throw new Error(`Unknown type: ${line.status}`);
+      }
+    });
+    return result.join('\n');
+  };
+
+  return iter(data, []);
+};
+export { stylish, plain };
